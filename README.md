@@ -121,10 +121,10 @@ This project is for educational and demonstration purposes. License details can 
 ![Service request form output](media/outputscreen/srf.png)
 
 ### 👤 User Output 1  
-![User output 1](media/outputscreen/User%20output1.png)
+![User output 1](media/outputscreen/Useroutput1.png)
 
 ### 👤 User Output 2  
-![User output 2](media/outputscreen/User%20output2.png)
+![User output 2](media/outputscreen/Useroutput2.png)
 
 ### 📅 View Bookings Output  
 ![View bookings output](media/outputscreen/vb.png)
