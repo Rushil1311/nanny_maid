@@ -94,13 +94,13 @@ This project is for educational and demonstration purposes. License details can 
 ![User login interface](media/outputscreen/login.png)
 
 ### 📝 Manage Subscription
-![Manage subscription plans](media/outputscreen/m_sub.png)
+![Manage subscription plans](media/outputscreen/sub.png)
 
 ### ➕ Add Category Form
-![Category creation form in admin](media/outputscreen/manage_c.png)
+![Category creation form in admin](media/outputscreen/managec.png)
 
 ### 📋 Category List
-![List of categories with images](media/outputscreen/manage_c1.png)
+![List of categories with images](media/outputscreen/managec1.png)
 
 ### 👩‍💼 Manage Nanny Users
 ![Manage nanny user list](media/outputscreen/mn.png)
