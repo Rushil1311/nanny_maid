@@ -1,0 +1,23 @@
+{% extends "adminapp/master.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h3 class="mb-4">Add New Subscription Plan</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Plan Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Price (₹)</label>
+            <input type="number" name="price" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Duration (Days)</label>
+            <input type="number" name="duration" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Save Plan</button>
+        <a href="{% url 'manage_subscriptions' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

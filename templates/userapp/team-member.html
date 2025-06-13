@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanny Registration</title>
+
+    <script>
+        // JavaScript to validate passwords before form submission
+        document.getElementById('teamMemberForm').onsubmit = function(event) {
+          var password = document.getElementById('password').value;
+          var confirmPassword = document.getElementById('confirmPassword').value;
+      
+          // Check if passwords match
+          if (password !== confirmPassword) {
+            event.preventDefault();  // Prevent form submission
+            document.getElementById('passwordError').style.display = 'block';  // Show error message
+          } else {
+            document.getElementById('passwordError').style.display = 'none';  // Hide error message
+          }
+        };
+      </script>
+    <style>*,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            background: #afafaf;
+            color: #eee;
+        }
+        
+        input,
+        button {
+            border: none;
+            outline: none;
+            background: none;
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            color: #eee;
+        }
+        
+        .tip {
+            font-size: 20px;
+            margin: 40px auto 50px;
+            text-align: center;
+            color: #ffc107;
+        }
+        
+        .cont {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            width: 900px;
+            height: 800px; /* Reduced height */
+            margin: 0 auto 100px;
+            background: #222;
+            box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.1), 10px 10px 15px rgba(0, 0, 0, 0.3), inset -10px -10px 15px rgba(255, 255, 255, 0.1), inset 10px 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form {
+            position: relative;
+            width: 100%; /* Take full width */
+            height: 100%;
+            padding: 20px 30px 0; /* Reduced padding */
+        }
+        
+        .sub-cont {
+            overflow: hidden;
+            position: relative; /* Changed to relative */
+            width: 100%; /* Take full width */
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1)!important; /* Very subtle black background for the form area */
+            display: flex; /* Added flexbox */
+            justify-content: center; /* Center horizontally */
+        }
+        
+        button {
+            display: block;
+            margin: 0 auto;
+            width: 260px;
+            height: 36px;
+            border-radius: 30px;
+            color: #000;
+            font-size: 15px;
+            cursor: pointer;
+            background: #ffc107;
+        }
+        
+        .img {
+            overflow: hidden;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100%;
+            padding-top: 360px;
+        }
+        
+        .img:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("ext.jpg");
+            opacity: .8;
+            background-size: cover;
+            transition: transform 1.2s ease-in-out;
+        }
+        
+        .img:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .img__text {
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 100%;
+            padding: 0 20px;
+            text-align: center;
+            color: #fff;
+            transition: transform 1.2s ease-in-out;
+        }
+        
+        .img__text h2 {
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        
+        .img__text p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        h2 {
+            width: 100%;
+            font-size: 26px;
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            width: 260px;
+            margin: 15px auto 0; /* Reduced margin */
+            text-align: center;
+        }
+        
+        label span {
+            font-size: 12px;
+            color: #ddd;
+            text-transform: uppercase;
+        }
+        
+        input {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            padding-bottom: 5px;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+        }
+        
+        .submit {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background: #ffc107;
+            text-transform: uppercase;
+        }
+        
+        .fb-btn {
+            border: 2px solid #d3dae9;
+            color: #8fa1c7;
+        }
+        
+        .fb-btn span {
+            font-weight: bold;
+            color: #455a81;
+        }
+        
+        .sign-in {
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+        
+        .cont.s--signup .sign-in {
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+            -webkit-transition-duration: 1.2s;
+            transition-duration: 1.2s;
+            -webkit-transform: translate3d(640px, 0, 0);
+            transform: translate3d(640px, 0, 0);
+        }
+        
+        .sign-up {
+            -webkit-transform: translate3d(-900px, 0, 0);
+            transform: translate3d(-900px, 0, 0);
+        }
+        
+        .cont.s--signup .sign-up {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        label input[type="file"] {
+    width: 262px; /* Adjust the width as needed */
+    padding: 8px 12px; /* Adjust padding for size */
+    background-color: rgba(255, 193, 7, 0.8); /* Theme yellow with transparency */
+    color: rgba(0, 0, 0, 0.8); /* Theme black text with transparency */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 14px; /* Adjust font size */
+    border: none; /* Remove default border if needed */
+}
+
+label input[type="file"]::-webkit-file-upload-button {
+    background-color: rgba(255, 193, 7, 0.9);/* A slightly brighter yellow for the button itself */
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+label input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: rgba(255, 193, 7, 1); /* Even brighter on hover */
+}
+        </style>
+
+
+</head>
+<body>
+    <br><br>
+    <div class="cont s--signup">  
+        <div class="sub-cont">
+          <form action="{% url 'team_member' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form sign-up">
+              <h2>Nanny Registration</h2>
+      
+              <label><span>Name</span><input type="text" name="name" required /></label>
+              
+              <label><span>Email</span><input type="email" name="email" required /></label>
+              
+              <label><span>Address</span><input type="text" name="address" required /></label>
+              
+              <label><span>Phone</span><input type="number" name="phone" required /></label>
+              
+              <label><span>Experience (Years)</span><input type="number" name="experience" required min="0" /></label>
+              
+              <label><span>Speciality</span><input type="text" name="speciality" required /></label>
+              
+              <label><span>Profile</span><input type="file" name="profile" required /></label>
+              
+              <label><span>Document</span><input type="file" name="adhar_pan" required /></label>
+              
+              <label><span>Password</span><input type="password" name="password" id="password" required /></label>
+
+              <label><span>Confirm Password</span><input type="password" name="password1" id="confirmPassword" required /></label>
+
+              <p id="passwordError" style="color: red; display: none;">Passwords do not match.</p>  <!-- Error message -->
+      
+              <button type="submit" class="submit">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+       
+</body>
+
+</html>

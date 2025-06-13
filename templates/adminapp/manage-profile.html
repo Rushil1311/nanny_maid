@@ -1,0 +1,113 @@
+{% extends "adminapp/master.html" %}
+{% load static %}
+{% block content %}
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Manage Furniture Owners</h1>
+
+        <!-- Search Bar -->
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search Owners...">
+
+        <!-- Add Owner Button -->
+        <button id="addOwnerBtn" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ownerFormModal">
+            Add Owner
+        </button>
+
+        <!-- Furniture Owners Table -->
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Authorization Status</th>
+                    <th>Date Registered</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for owner in owners %}
+                <tr>
+                    <td>{{ owner.id }}</td>
+                    <td>{{ owner.username }}</td>
+                    <td>{{ owner.email }}</td>
+                    <td>{{ owner.phone }}</td>
+                    <td>{{ owner.address }}</td>
+                    <td>
+                        {% if owner.is_verify %}
+                            <span class="badge bg-success">Authorized</span>
+                        {% else %}
+                            <span class="badge bg-danger">Unauthorized</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ owner.date_joined }}</td>
+                    <td>
+                        {% if not owner.is_verify %}
+                            <a href="{% url 'accept_owner' owner.id %}" class="btn btn-success btn-sm">
+                                Approve Owner
+                            </a>
+                        {% else %}
+                            <a href="{% url 'accept_owner' owner.id %}" class="btn btn-warning btn-sm">
+                                Decline Owner
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'delete_owner' owner.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for Adding Owner -->
+    <div id="ownerFormModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Owner</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'add_owner' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label>Name:</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Email:</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Phone:</label>
+                            <input type="text" name="phone" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Address:</label>
+                            <textarea name="address" class="form-control" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label>Password:</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Profile Picture:</label>
+                            <input type="file" name="profile_picture" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label>Identity Proof (Aadhar/PAN):</label>
+                            <input type="file" name="identity_proof" class="form-control">
+                        </div>
+                        <input type="hidden" name="role" value="Owner">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

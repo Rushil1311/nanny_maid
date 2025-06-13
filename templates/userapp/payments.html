@@ -1,0 +1,36 @@
+{% extends "userapp/master.html" %}
+{% load static %} 
+{% block content %}
+
+<button id="rzp-button1">Pay with Razorpay</button>
+
+<script>
+    var options = {
+        "key": "YOUR_TEST_KEY_ID",
+        "amount": "50000",
+        "currency": "INR",
+        "name": "Test Company",
+        "description": "Test Transaction",
+        "order_id": "ORDER_ID_FROM_BACKEND",
+        "handler": function (response){
+            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        },
+        "prefill": {
+            "name": "Test User",
+            "email": "test@example.com",
+            "contact": "9999999999"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    };
+</script>
+
+
+{% endblock %}  

@@ -1,0 +1,57 @@
+{% extends 'adminapp/master.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="pagetitle">
+      <h1>Form Editors</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'adminindexview' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Editors</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">No Labels / Placeholders as labels Form</h5>
+
+        <!-- No Labels Form -->
+        <form class="row g-3" method="post">
+          {% csrf_token %}
+          <div class="col-md-12">
+            <input type="text" name="YN" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="col-md-6">
+            <input type="email" name="em" class="form-control" placeholder="Email">
+          </div>
+          <div class="col-md-6">
+            <input type="password" name="pas" class="form-control" placeholder="Password">
+          </div>
+          <div class="col-12">
+            <input type="text" name="ad" class="form-control" placeholder="Address">
+          </div>
+          <div class="col-md-6">
+            <input type="text" name="ct" class="form-control" placeholder="City">
+          </div>
+          <div class="col-md-4">
+            <select id="inputState" class="form-select">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <input type="text" name="zipc" class="form-control" placeholder="Zip">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End No Labels Form -->
+
+      </div>
+    </div>
+
+
+{% endblock %}

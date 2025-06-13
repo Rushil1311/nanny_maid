@@ -1,0 +1,110 @@
+{% extends "adminapp/master.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Nanny Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-accept {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-decline {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Manage Nanny Requests</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nanny Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ab in nanny %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ab.username}}</td>
+                    <td>{{ab.email}}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-decline">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function handleAction(action, id) {
+            if (action === 'accept') {
+                alert(`Nanny request #${id} accepted.`);
+                // Perform additional logic for accepting the request
+            } else if (action === 'decline') {
+                alert(`Nanny request #${id} declined.`);
+                // Perform additional logic for declining the request
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}
+

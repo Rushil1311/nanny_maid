@@ -1,0 +1,72 @@
+{% extends "adminapp/master.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+  input[type="text"], input[type="email"], input[type="file"] {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .form-label {
+      font-weight: bold;
+      color: #555;
+  }
+</style>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+      <div class="profile-nav col-md-3">
+        <div class="panel">
+          <div class="user-heading round text-center">
+            {% if request.user.profile %}
+              <img src="{{ request.user.profile.url }}" alt="Profile Picture" width="112" height="112" class="img-fluid rounded-circle">
+            {% else %}
+              <img src="{% static 'client-img.jpg' %}" alt="Default Profile Picture" width="112" height="112" class="img-fluid rounded-circle">
+            {% endif %}
+            <h1>{{ request.user.first_name }}</h1>
+            <p>integraservices2025@gmail.com</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="profile-info col-md-9">
+        <div class="panel">
+          <div class="panel-body bio-graph-info">
+            <h1>Edit Profile</h1>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="bio-row">
+                  <label>First Name:</label>
+                  <input type="text" name="first_name" value="{{ request.user.first_name }}" required>
+                </div>
+                <div class="bio-row">
+                  <label>Last Name:</label>
+                  <input type="text" name="last_name" value="{{ request.user.last_name }}">
+                </div>
+                <div class="bio-row">
+                  <label>Email:</label>
+                  <input type="email" name="email" value="{{ request.user.email }}" required>
+                </div>
+                <div class="bio-row">
+                  <label>Phone:</label>
+                  <input type="text" name="phone" value="{{ request.user.phone }}">
+                </div>
+                
+                <div class="bio-row">
+                  <label>Profile Picture:</label>
+                  <input type="file" name="profile">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success mt-3">Update Profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

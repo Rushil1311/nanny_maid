@@ -1,0 +1,153 @@
+{% extends "userapp/master.html" %}
+{% load static %}
+{% block content %}
+
+<style>/* Order Management Page Styles */
+    .order-management-container {
+      padding: 40px;
+      background-color: #fff;
+    }
+    
+    .order-management-container h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .order-management-container .card {
+      border: 1px solid #333;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .order-management-container .card-title {
+      color: #e6b800;
+    }
+    
+    .order-management-container .table {
+      border-collapse: separate;
+      border-spacing: 0 10px;
+    }
+    
+    .order-management-container .table th {
+      background-color: #e6b800;
+      color: #fff;
+      padding: 12px;
+    }
+    
+    .order-management-container .table td {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .order-management-container .btn-primary {
+      background-color: #e6b800;
+      border: none;
+    }
+    
+    .order-management-container .btn-secondary {
+      background-color: #333;
+      color: #fff;
+    }
+    
+    .order-management-container .btn-secondary:disabled {
+      background-color: #999;
+    }</style>
+<!-- About Section -->
+<section id="about" class="about section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>My Service Requests</h2>
+  </div>
+</section>
+
+<!-- Display Django Messages -->
+{% if messages %}
+  <div class="container mt-3">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<section class="order-management-container section d-flex justify-content-center align-items-center">
+  <div class="col-lg-10">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center">My Request List</h5>
+
+        <!-- Orders Table -->
+        <div class="table-responsive">
+          <table class="table table-hover align-middle text-center">
+            <thead>
+              <tr>
+                <!-- <th>#</th> -->
+                <th>Booking ID</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Service </th>
+                <th>Description</th>
+                <th>Actions</th>
+                <th>review</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for booking in data %}
+              <tr id="row-{{ booking.id }}">
+                <!-- <td>{{ forloop.counter }}</td> -->
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.user.first_name }}</td>
+                <td>{{ booking.user.email }}</td>
+                <td>{{ booking.user.phone|default:"N/A" }}</td>
+                <td>{{ booking.user.address|default:"N/A" }}</td>
+                <td>{{ booking.date|date:"M d, Y" }}</td>
+                <td>{{ booking.time|date:"H:i A" }}</td>
+                <td>{{ booking.service_type }}</td>
+                <!-- <td>{{ booking.profile.url }}</td> -->
+                <td>{{ booking.Description }}</td>
+                <td>{{ nannyreview.review }}</td>
+
+                <!-- <td><a target="_blank" href="{{ booking.map_link }}">Show Location</a></td> -->
+                <td id="actions-{{ booking.id }}">
+                  <div class="d-flex justify-content-center gap-2">
+                    <a href="{% url 'request_details' booking.id %}">
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-{{ booking.id }}">
+                        <i class="bi bi-check-circle-fill"></i> View Details
+                      </button>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="13" class="text-center text-muted">No orders found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- End Orders Table -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Auto-Dismiss Alert After 4 Seconds -->
+<script>
+  setTimeout(function() {
+    let alerts = document.querySelectorAll(".alert");
+    alerts.forEach(alert => {
+      alert.classList.add("fade");
+      setTimeout(() => alert.remove(), 500);
+    });
+  }, 4000); // 4 seconds
+</script>
+
+{% endblock %}

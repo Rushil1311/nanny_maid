@@ -1,0 +1,61 @@
+{% extends 'adminapp/master.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="pagetitle">
+      <h1>Bookings List</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'adminindexview' %}">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Bookings</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">booking Table</h5>
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+
+                    <th scope="col">no</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</Time></th>
+                    <th scope="col">Service Type</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Discription</th>
+                    <!-- <th scope="col">Map Link</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ab in data %}
+                  <tr>
+                    <th scope="row">{{ab.id}}</th>
+                    
+                    <td>{{ab.date}}</td>
+                    <td>{{ab.time}}</td>  
+                    <td>{{ab.service_type}}</td>
+                    <td>{{ab.address}}</td>
+                    <td>{{ab.Description}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+{% endblock %}

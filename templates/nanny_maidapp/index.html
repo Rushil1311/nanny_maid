@@ -1,0 +1,523 @@
+{% extends 'nanny_maidapp/master.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .slide-bg-3 {
+    background-image: url(../../static/nannyapp/assets/img/slide-bg-33.jpeg) !important;
+}
+
+.select-plan {
+            background-color: #f4b400; /* Original Yellow Color */
+            color: black;
+            border: none;
+            padding: 12px 32px; /* Increased width */
+            cursor: pointer;
+            border-radius: 25px; /* Rounded edges */
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            display: block; /* Makes button take full width */
+            width: 80%; /* Slightly bigger width */
+            margin: 15px auto 0; /* Centers button horizontally */
+            text-align: center;
+        }
+        
+        .select-plan:hover {
+            background-color: #e5a900; /* Slightly darker yellow on hover */
+            transform: translateY(-2px); /* Smooth hover lift effect */
+        }
+    </style>
+
+    <div class=homepage-slides>
+        <div class="single-slider-item slide-bg-1">
+            <div class=d-table>
+                <div class=d-tablecell>
+                    <div class=container>
+                        <div class=row>
+                            <div class=col-lg-8>
+                                <h1>The <span>best</span> cleaning company in the country</h1>
+                                <p>We provide best solutions for a Clean Environment. If you need any help in cleaning
+                                    or maintenance.</p>
+                                <!-- <a href=#contact class="cleaning-btn slide-btn">Request A Quote</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slider-item slide-bg-2">
+            <div class=d-table>
+                <div class=d-tablecell>
+                    <div class=container>
+                        <div class=row>
+                            <div class="col-lg-10 offset-lg-1 text-center">
+                                <h1>Professional <span>Cleaning</span> Services Provider</h1>
+                                <p>We provide best solutions for a Clean Environment. If you need any help in cleaning
+                                    or maintenance.</p>
+                                <!-- <a href=#contact class="cleaning-btn slide-btn">Request A Quote</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slider-item slide-bg-3">
+            <div class=d-table>
+                <div class=d-tablecell>
+                    <div class=container>
+                        <div class=row>
+                            <div class="col-lg-10 offset-lg-1 text-center">
+                                <h1>Quality <span>Presentation</span> Customer Service are our true values</h1>
+                                <p>We provide best solutions for a Clean Environment. If you need any help in cleaning
+                                    or maintenance.</p>
+                                <!-- <a href=#contact class="cleaning-btn slide-btn">Request A Quote</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=working-info id="contact">
+        <div class=container>
+            <div class=row>
+                <div class="col-md-6 col-lg-4">
+                    <div class="single-working-info wow fadeInUp">
+                        <i class="fa fa-clock-o"></i>
+                        <h3>Opening Hours</h3>
+                        <p>Monday - Friday <br /> <span>08.00 am - 10.00 pm</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="single-working-info wow fadeInUp" data-wow-delay=0.4s>
+                        <i class="fa fa-phone"></i>
+                        <h3>Any Questions?</h3>
+                        <p>Call Us Now <br /> <span>+91-6356073163</span></p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="single-working-info wow fadeInUp" data-wow-delay=0.8s>
+                        <i class="fa fa-home"></i>
+                        <h3>Visit Us</h3>
+                        <p>Need Cleaning <br /> <span>75 Hockanum Blvd Unit 1523, Vernon Rockville, CT, 06066</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="cleaning-content-block about-us" id="about-us">
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-12>
+                    <div class="section-title text-center">
+                        <h2>About Us</h2>
+                        <p>We are Local, License and Insurance company!</p>
+                    </div>
+                </div>
+            </div>
+            <div class=row>
+                <div class=col-lg-6>
+                    <div class=who-we-info>
+                        <div class=single-info>
+                            <i class="fa fa-users"></i>
+                            <h4>Professional Staffs</h4>
+                            <p>We make ourselves known in the community; we create long term relations, while constantly
+                                expanding. Therefore, we are always bringing in more people to work for us.</p>
+                        </div>
+                        <div class=single-info>
+                            <i class="fa fa-bath"></i>
+                            <h4>First Class Service</h4>
+                            <p>Our goal is Your satisfaction (of course after our cleaning work). Office Phone works
+                                around the clock (24/7).</p>
+                        </div>
+                        <!-- <div class=single-info>
+                            <i class="fa fa-shield"></i>
+                            <h4>Verified and Secure</h4>
+                            <p>Lorem ipsum dolor sit amet, esse aliquid liberavisse eos ea.</p>
+                        </div> -->
+                        <div class=single-info>
+                            <i class="fa fa-cogs"></i>
+                            <h4>Quality Cleaning Tools</h4>
+                            <p>We carefully choose the best and most natural cleaning products that give amazing
+                                results.</p>
+                        </div>
+                        <!-- <ul class=list-inline>
+                            <li><img src="{% static 'nannyapp/assets/img/check.png' %}" alt=check> Creativity</li>
+                            <li><img src="{% static 'nannyapp/assets/img/check.png' %}" alt=check> Experience</li>
+                            <li><img src="{% static 'nannyapp/assets/img/check.png' %}" alt=check> Teamwork</li>
+                            <li><img src="{% static 'nannyapp/assets/img/check.png' %}" alt=check> Result</li>
+                        </ul> -->
+                    </div>
+                </div>
+                <div class=col-lg-6>
+                    <div class=promo-video>
+                        <div class="promo-video-block promo-video-bg">
+                            <a href="https://vimeo.com/43250124" class="promo-play-btn popup-vimeo">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class=why-choose-us>
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-12>
+                    <div class="section-title text-center">
+                        <h2>Why Choose Us</h2>
+                        <p>We serve our clients as if we were serving ourselves. We value their <br class=hidden-xs />
+                            feedback and we use it to improve our work.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=row>
+                <div class="col-lg-6 col-xl-4">
+                    <div class=choose-reasons>
+                        <i class="fa fa-star"></i>
+                        <h4>We provide best solutions for a Clean Environment.</h4>
+                        <p>We serve our clients as if we were serving ourselves. We value their feedback and we use it
+                            to improve our work.</p>
+                    </div>
+                    <div class=choose-reasons>
+                        <i class="fa fa-users"></i>
+                        <h4>We Provide Qualified and Expert</h4>
+                        <p>We provide training to our personnel in order to ensure the high standard of service. We stay
+                            up-to-date on the latest innovations in eco-friendly products and technologies, allowing us
+                            to bring the best in to our clients’ homes.</p>
+                    </div>
+                </div>  
+                <div class="col-lg-6 col-xl-4 hidden-md">
+                    <div class=service-team>
+                        <img src="{% static 'nannyapp/assets/img/service-team.jpg' %}" alt="Service Man">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class=choose-reasons>
+                        <i class="fa fa-wrench"></i>
+                        <h4>Mordant Technology and Tools We Use</h4>
+                        <p>We carefully choose the best and most natural cleaning products that give amazing results.
+                        </p>
+                    </div>
+                    <div class=choose-reasons>
+                        <i class="fa fa-life-ring"></i>
+                        <h4>Quick Response and 24/7 Support</h4>
+                        <p>Our goal is Your satisfaction (of course after our cleaning work). Office Phone works around
+                            the clock (24/7).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cleaning-content-block achivment-section">
+        <div class=container>
+            <div class=row>
+                <div class="col-md-6 col-lg-3 wow fadeInUp">
+                    <div class=counter-box>
+                        <i class="fa fa-calendar"></i>
+                        <h3 class=counter-number>30</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=0.2s>
+                    <div class=counter-box>
+                        <i class="fa fa-user-plus"></i>
+                        <h3 class=counter-number>1599</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=0.4s>
+                    <div class=counter-box>
+                        <i class="fa fa-users"></i>
+                        <h3 class=counter-number>1299</h3>
+                        <p>Our Employees</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=0.6s>
+                    <div class=counter-box>
+                        <i class="fa fa-trophy"></i>
+                        <h3 class=counter-number>199</h3>
+                        <p>Awards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- <section class="cleaning-content-block price-table" id="pricing">
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-12>
+                    <div class="section-title text-center">
+                        <h2>Flexible Pricing</h2>
+                        <p>Let us use our years of experience, skilled employees, and advanced procedures to ensure a
+                            clean<br class=hidden-xs /> and healthy environment for your employees, customers and
+                            guests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>3 Months Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹5000</h2>
+                            <p>For 3 Months</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="3 Months Subscription" data-amount="5000">Select Plan</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>6 Months Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹9000</h2>
+                            <p>For 6 Months</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="6 Months Subscription" data-amount="9000">Select Plan</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>1 Year Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹14000</h2>
+                            <p>For 1 Year</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="1 Year Subscription" data-amount="14000">Select Plan</button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </section> -->
+
+
+    <section class="cleaning-content-block price-table" id="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h2>Flexible Pricing</h2>
+                        <p>
+                            Let us use our years of experience, skilled employees, and advanced procedures to ensure a
+                            clean<br class="hidden-xs" />
+                            and healthy environment for your employees, customers and guests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <!-- 3 Months Plan -->
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>3 Months Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹5000</h2>
+                            <p>For 3 Months</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="3 Months Subscription" data-amount="5000">Select Plan</button>
+                    </div>
+                </div>
+    
+                <!-- 6 Months Plan -->
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>6 Months Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹9000</h2>
+                            <p>For 6 Months</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="6 Months Subscription" data-amount="9000">Select Plan</button>
+                    </div>
+                </div>
+    
+                <!-- 1 Year Plan -->
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-price-table">
+                        <h3>1 Year Subscription</h3>
+                        <div class="amount-text">
+                            <h2>₹14000</h2>
+                            <p>For 1 Year</p>
+                        </div>
+                        <ul class="offer-list">
+                            <li>Apartment Cleaning</li>
+                            <li>Office Cleaning</li>
+                            <li>House Cleaning</li>
+                            <li>Car Washing</li>
+                            <li>Green Cleaning</li>
+                            <li>Maintenance Service</li>
+                        </ul>
+                        <button class="select-plan" data-plan="1 Year Subscription" data-amount="14000">Select Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   <section class="cleaning-content-block testimonial">
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-12>
+                    <div class="section-title text-center">
+                        <h2>Our Valueable Client Says</h2>
+                    </div>
+                </div>
+            </div>
+            <div class=testimonial-slides>
+                <div class="testimonial-slide-item wow fadeInUp">
+                    <div class=row>
+                        <div class=col-md-4>
+                            <div class=profile-item>
+                                <img src="{% static 'nannyapp/assets/img/client-img.jpg' %}" class=img-circle alt=nick>
+                                <span class=qout-icon><img src="{% static 'nannyapp/assets/img/qoute.png' %}" alt=qoute></span>
+                            </div>
+                        </div>
+                        <div class=col-md-8>
+                            <h3>Stephanie S.</h3>
+                            <p>Integra Cleaning Service is wonderful and also reasonably priced and extremely
+                                professional! They always go above and beyond. Family owned and operated, I have known
+                                them for 9 years. They currently clean my Airbnb in University Place and my home in
+                                Tacoma.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide-item wow fadeInUp">
+                    <div class=row>
+                        <div class=col-md-4>
+                            <div class=profile-item>
+                                <img src="{% static 'nannyapp/assets/img/client-img.jpg' %}" class=img-circle alt=nick>
+                                <span class=qout-icon><img src="{% static 'nannyapp/assets/img/qoute.png' %}" alt=qoute></span>
+                            </div>
+                        </div>
+                        <div class=col-md-8>
+                            <h3>Sam S.</h3>
+                            <p>Well first off we’ve been getting service from Integra for about a year n a half n I have
+                                to say they do a great job on cleaning whatever I need done they do it n with a smile
+                                very friendly people I definitely recommend there services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cleaning-content-block subscription">
+        <div class=container>
+            <div class="row wow fadeInUp" data-wow-delay=0.2s>
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <p>Get latest news in your inbox</p>
+                    <h2>Subscribe now</h2>
+                    <div class=subscribe-form>
+                        <form action=https://templates.envytheme.com/milkwash/default/index.html>
+                            <input placeholder="Enter your email address" required>
+                            <button type=submit>subscribe now</button>
+                        </form>
+                    </div>
+                    <span><i class="fa fa-lock"></i> We never share your email with others</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id=back-to-top title="Back to Top">
+        <i class="fa fa-long-arrow-up"></i>
+    </a>
+
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.querySelectorAll(".select-plan").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            let planName = this.getAttribute("data-plan");
+            let amount = this.getAttribute("data-amount");
+
+            fetch("{% url 'create_order' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({ "plan_name": planName, "amount": amount })
+            })
+            .then(response => response.json())
+            .then(order => {
+                var options = {
+                    "key": order.razorpay_key,
+                    "amount": order.amount,
+                    "currency": order.currency,
+                    "name": "Maid Service",
+                    "description": planName,
+                    "order_id": order.id,
+                    "handler": function (response) {
+                        fetch("{% url 'payment_success' %}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRFToken": "{{ csrf_token }}",
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: new URLSearchParams(response)
+                        })
+                        .then(res => res.json())
+                        .then(data => alert(data.message));
+                    },
+                    "prefill": {
+                        "name": "{{ request.user.username }}",
+                        "email": "{{ request.user.email }}"
+                    },
+                    "theme": { "color": "#3399cc" }
+                };
+
+                var rzp = new Razorpay(options);
+                rzp.open();
+            });
+        });
+    });
+</script>
+
+
+    {% endblock %}

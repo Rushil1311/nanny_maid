@@ -1,0 +1,16 @@
+{% extends "nanny_maidapp/master.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription Details</title>
+</head>
+
+<h1>Subscription Details</h1>
+<p><strong>Plan:</strong> {{ subscription.plan_name }}</p>
+<p><strong>Start Date:</strong> {{ subscription.start_date }}</p>
+<p><strong>End Date:</strong> {{ subscription.end_date }}</p>
+<p><strong>Status:</strong> {{ subscription.status }}</p>
+
+{% endblock %}

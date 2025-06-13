@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang=en>
+{% load static %}
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Integra Cleaning Services</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/bootstrap.min.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/font-awesome.min.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/owl.carousel.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/magnific-popup.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/slicknav.min.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/animate.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/style.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/responsive.css' %}">
+    <link rel=stylesheet href="{% static 'nannyapp/assets/css/color/default-color.css' %}">
+    <link rel=icon type="image/png" href="{% static 'nannyapp/assets/img/favicon.png' %}">
+
+
+    <style>.mainmenu .dropdown-menu {
+        background-color: white; /* Slight transparency for smooth blending */
+        border: 1px solid rgba(0, 0, 0, 0.1); /* Light subtle border */
+        border-radius: 5px; /* Slightly rounded corners for a modern look */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        top:97%;
+    }
+
+    /* Style dropdown items */
+    .mainmenu .dropdown-menu .dropdown-item {
+        color: #333; /* Match navbar text color */
+        padding: 10px 15px;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+    }
+    
+    /* Apply hover effect with a more blended color */
+    .mainmenu .dropdown-menu .dropdown-item:hover {
+        background-color: rgba(0, 123, 255, 0.1); /* Subtle hover effect */
+        color: #007bff; /* Match theme color */
+    }
+    
+    /* Ensure dropdown aligns properly */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }</style>
+</head>
+
+<body>
+    <div class=preloader-wrap>
+        <div class=d-table>
+            <div class=d-tablecell>
+                <img src="{% static 'nannyapp/assets/img/loader.gif' %}" />
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class=header-top-area> -->
+        <!-- <div class=container>
+            <div class=row>
+                <div class=col-lg-9>
+                    <a href=""><i class="fa fa-envelope"></i> Mail at: <span class="__cf_email__"
+                            data-cfemail="deadabaeaeb1acaa9eb3b7b2b5a9bfadb6f0bdb1b3">[email&#160;protected]</span></a>
+                    <span class=seprator>|</span>
+                    <a href="tel:+12345678945"><i class="fa fa-phone"></i> Call Us: +12345678945</a>
+                </div>
+                <div class="col-lg-3 text-right">
+                    <div class=social-icon>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    <!-- </div> -->
+    <div class=mainmenu-area style="background-color: #606264;">
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-2>
+                    <div class=logo>
+                        <a href="{% url 'nannyindexview' %}" ><img src="{% static 'nannyapp/assets/img/logo.png' %}" alt=Logo class=w-75></a>
+                        <!-- {% static 'nannyapp/assets/img/footer-logo.png' %} -->
+                    </div>
+                    <div class=responsive-menu-wrap></div>
+                </div> 
+                <div class=col-lg-10>
+                    <div class=mainmenu>
+                        <ul id=navigation>
+                            <li class=><a href="{% url 'nannyindexview' %}">Home</a>
+                            </li>
+                            <li class=><a href="{% url 'dashboard' %}">Dashboard</a>
+                            </li>
+                            <li><a href="{% url 'nabout_us' %}">About</a></li>
+                            <li><a href="{% url 'nanny_contact' %}">Contact</a></li>
+                            <li><a href="{% url 'subscription' %}">subscription</a></li>
+
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profile
+                                </a>
+                                <div class="dropdown-menu " aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item" href="{% url 'nanny_profile' %}">View Profile</a>
+                                    {% if request.user.is_authenticated %}
+                                        <a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a>
+                                    {% else %}
+                                        <a class="dropdown-item" href="{% url 'user_login' %}">Login</a>
+                                    {% endif %}
+                                    <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+                                    <a class="dropdown-item" href="{% url 'view_accepted_orders' %}">My Requests</a>
+                                    <a class="dropdown-item" href="{% url 'view_requests' %}">View Accepted Orders</a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+<footer class=site-footer id="contact-us">
+    <div class=footer-top-area>
+        <div class=container>
+            <div class=row>
+                <div class="col-1"></div>
+                <div class="col-lg-3 col-md-4">
+                    <div class=footer-wid>
+                        <h2 class=footer-logo><img src="{% static 'nannyapp/assets/img/footer-logo.png' %}" alt=Logo></h2>
+                        <p>We are always ready to help you.</p>
+                        <p>the capital-2 building 9th floor office no 901, science city road, sola, ahemdabad </p>
+                        <div class=address-info>
+                            <span>Phone: +91-6356073163</span>
+                            <!-- <span>Fax: +12345678945</span> -->
+                            <span>Email:kittupatel1508@gmail.com<a href="" class="__cf_email__"
+                                    data-cfemail="c1b2b4b1b1aeb3b581aca8adaab6a0b2a9efa2aeac"></a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="footer-wid footer-menu pl-30">
+                        <h3 class=footer-wid-title>Quick Links</h3>
+                        <ul>
+                            <li><a href="{% url 'nannyindexview' %}"><i class="fa fa-chevron-circle-right"></i> home</a></li>
+                            <li><a href="{% url 'nabout_us' %}"><i class="fa fa-chevron-circle-right"></i> About</a></li>
+                            <!-- {% comment %} <li><a href="{% url '' %}"><i class="fa fa-chevron-circle-right"></i> projects</a></li> {% endcomment %} -->
+                            <li><a href="{% url 'pricing' %}"><i class="fa fa-chevron-circle-right"></i> PRICING</a></li>
+                            <li><a href="{% url 'nanny_contact' %}"><i class="fa fa-chevron-circle-right"></i> contact</a></li>
+                            <li><a href="{% url 'team_member' %}"><i class="fa fa-chevron-circle-right"></i> join as a team</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3 col-md-6">
+                    <div class=footer-wid>
+                        <h3 class=footer-wid-title>Recent Post</h3>
+                        <a class=single-footer-iem href=single-post.html>
+                            <img src="assets/img/blog-img-1.jpg" alt=Image>
+                            <p>Lorem ipsum dolor</p>
+                            <span>June 10, 2017</span>
+                        </a>
+                        <a class=single-footer-iem href=single-post.html>
+                            <img src="assets/img/blog-img-2.jpg" alt=Image>
+                            <p>Lorem ipsum dolor</p>
+                            <span>June 10, 2017</span>
+                        </a>
+                        <a class=single-footer-iem href=single-post.html>
+                            <img src="assets/img/blog-img-3.jpg" alt=Image>
+                            <p>Lorem ipsum dolor</p>
+                            <span>June 10, 2017</span>
+                        </a>
+                    </div>
+                </div> -->
+                <div class="col-lg-3 col-md-4">
+                    <div class=footer-wid>
+                        <h3 class=footer-wid-title>Opening Hours</h3>
+                        <ul class=opening-hour>
+                            <li>Monday - Friday : <span>08.00 am - 10.00 pm</span></li>
+                            <li>Saturday : <span>8.00am - 2.00pm</span></li>
+                            <li>Sunday : <span>Closed</span></li>
+                        </ul>
+                        <div class=social-icos>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class=footer-copyright-area>
+        <div class=container>
+            <div class=row>
+                <div class=col-lg-6>
+                    © 2021 All Rights Reserved by Integra Cleaning Services.
+                </div>
+                <div class="col-lg-6 text-right">
+                    <ul class=list-inline>
+                        <li><img src="{% static 'nannyapp/assets/img/mastercard.png' %}" alt=payment></li>
+                        <li><img src="{% static 'nannyapp/assets/img/paypal.png' %}" alt=payment></li>
+                        <li><img src="{% static 'nannyapp/assets/img/visa02.png' %}" alt=payment></li>
+                        <li><img src="{% static 'nannyapp/assets/img/americanexpress.png' %}" alt=payment></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{% static 'nannyapp/assets/js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/mixitup.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/wow.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/active.js' %}"></script>
+</body>
+<script src="{% static 'nannyapp/assets/js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'nannyapp/assets/js/bootstrap.min.js' %}"></script>
+
+</html>
+

@@ -1,0 +1,200 @@
+{% extends 'userapp/master.html' %}
+{% load static %}
+{% block content %}
+<style>/* General Styles */
+    
+    /* button */
+    button {
+        align-items: center;
+        margin-left: 45%;
+    }
+
+    body {
+    background: url('/static/userapp/assets/img/slide-bg-4.jpg') no-repeat center center fixed;
+    background-size: cover; /* Cover the full page */
+    background-blend-mode: overlay; /* Subtle blend effect */
+}
+
+
+    /* Heading */
+    h2 {
+    color: #161505; /* Theme Color */
+    text-align: center;
+    border: #f4eb6d;
+    background: #f3ef6f; /* Theme color for the background */
+    border: 1px solid #f3ef6f; /* Theme-colored border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(243, 239, 111, 0.5); 
+    width: 60%; /* Set a width while keeping it centered */
+    max-width: 400px; /* Prevents it from getting too wide */
+    margin: 20px auto; 
+    
+}
+
+/* .navbar { */
+    /* position: fixed;  */
+    /* Keeps it at the top */
+    /* top: 0;
+    left: 0;
+    width: 100%; */
+    /* background: rgba(0, 0, 0, 0.8);  */
+    /* Semi-transparent black */
+    /* padding: 10px 20px; */
+    /* transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;  */
+    /* Smooth effect */
+    /* opacity: 0;  */
+    /* Initially hidden */
+    /* transform: translateY(-100%);  */
+    /* Moves it above the viewport */
+/* } */
+
+
+/* .navbar:hover { */
+    /* opacity: 1; */
+    /* transform: translateY(0); Moves it back into view */
+/* } */
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    background: #48505ba4; /* Darker subtle background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    max-width: 400px; /* Keeps the form compact */
+    margin: auto; /* Centers the form */
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #ffffff; /* White text for contrast */
+}
+
+/* Input & Select Fields */
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    background: #3b3f45; /* Slightly lighter dark shade */
+    color: #ffffff; /* White text */
+}
+
+/* Input Placeholder Color */
+input::placeholder, 
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Light gray placeholder */
+}
+
+/* Submit Button */
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff; /* Theme Primary Color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Success Message */
+#message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    form {
+        max-width: 90%; /* Ensures form fits on smaller screens */
+    }
+}
+
+    /* body{
+        background-image: url(../../static/userapp/assets/img/slide-bg-33.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* background-position: center; }
+        */
+    </style>
+<body>
+
+    <div class="container">
+        <h2>Request a Service</h2>
+        <form id="serviceForm" method="post">
+            {% csrf_token %}
+            <!-- Date Input -->
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <!-- Time Input -->
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time" required>
+            
+
+            <!-- Dynamic Service Type Dropdown -->
+    <label for="serviceType">Select Service Type:</label>
+    <select id="serviceType" name="service_type" required>
+    <option value="">-- Choose a Service --</option>
+    {% for service in services %}
+        <option value="{{ service.id }}">{{ service.name }}</option>
+    {% endfor %}
+    </select>
+            <!-- Service Type Dropdown
+            <label for="serviceType">Select Service Type:</label>
+            <select id="serviceType" name="service_type" required>
+                <option value="">-- Choose a Service --</option>
+                <option value="Nanny Service">Nanny Service</option>
+                <option value="Maid Service">Maid Service</option>
+                <option value="Cleaning Service">Cleaning Service</option>
+                <option value="Cooking Assistance">Cooking Assistance</option>
+            </select> -->
+
+            <!-- Address Input -->
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <!-- Description -->
+            <label for="description">Additional Description:</label>
+            <textarea id="description" name="Description" placeholder="Enter any Description"></textarea>
+
+            <label for="Map Link">Map Link :</label>
+            <textarea id="description" name="Map_Link" placeholder="Enter Your Map Link"></textarea>
+
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.521672521792!2d72.50131167477191!3d23.077991614258828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9d384635d2a3%3A0x908a0935ddef1fd3!2z4KSmIOCkleCliOCkquCkv-Ckn-CksiAy!5e0!3m2!1shi!2sin!4v1741672119933!5m2!1shi!2sin" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</iframe> -->
+
+            </div>
+            <br> 
+            <!-- Submit Button -->
+            <button class="button" type="submit">Submit Request</button>
+            <br><br><br> 
+        </form>
+
+        <p id="message"></p>
+    </div>
+    <script>
+        function updateMap() {
+            var mapLink = document.getElementById("mapLink").value;
+            var googleMap = document.getElementById("googleMap");
+            
+            if (mapLink.includes("maps/place")) {
+                googleMap.src = mapLink.replace("/maps/place/", "/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=");
+            }
+        }
+    </script>
+    <script src="script.js"></script> <!-- Link to JavaScript file -->
+
+    {% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends "adminapp/master.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Service Payments</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Maid</th>
+          <th>Customer</th>
+          <th>Service</th>
+          <th>Status</th>
+          <th>Amount</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ item.maid.first_name }}<br>{{ item.maid.email }}</td>
+          <td>{{ item.service.user.first_name }}<br>{{ item.service.user.email }}</td>
+          <td>{{ item.service.service_type }}</td>
+          <td>{{ item.status }}</td>
+          <td>₹{{ item.base_price }}</td>
+          <td>
+            {% if item.payment_status == "Paid" %}
+              <span class="text-success fw-bold">Paid</span>
+            {% else %}
+              <span class="text-warning fw-bold">Pending</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="8">No service payments found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

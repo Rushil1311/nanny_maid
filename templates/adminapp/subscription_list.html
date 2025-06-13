@@ -1,0 +1,37 @@
+{% extends "adminapp/master.html" %}
+{% load static %} 
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Maid Subscriptions</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>User</th>
+                    <th>Plan Name</th>
+                    <th>Amount (₹)</th>
+                    <th>Payment ID</th>
+                    <th>Status</th>
+                    <th>Subscribed On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subscription in subscriptions %}
+                <tr>
+                    <td>{{ subscription.user.username }}</td>
+                    <td>{{ subscription.get_plan_name_display }}</td>
+                    <td>₹{{ subscription.amount }}</td>
+                    <td>{{ subscription.payment.payment_id }}</td>
+                    <td>{{ subscription.status }}</td>
+                    <td>{{ subscription.created_at }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No subscriptions found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}  
+
+

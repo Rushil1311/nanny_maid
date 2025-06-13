@@ -1,0 +1,65 @@
+{% extends 'userapp/master.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="pagetitle">
+      <h1>Services Listings</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'adminindexview' %}">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">services</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body"> 
+              <h5 class="card-title">List of Service</h5>
+              <p>these are the services that we provide.</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">no</th>
+                    <th scope="col">YN</th>
+                    <th scope="col">em</th>
+                    <th scope="col">ad</th>
+                    <th scope="col">ct</th>
+                    <th scope="col">zipc</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ab in data %}
+                  <tr>
+                    <th scope="row">{{ab.id}}</th>
+                    <td>{{ab.YN}}</td>
+                    <td>{{ab.em}}</td>
+                    <td>{{ab.ad}}</td>
+                    <td>{{ab.ct}}</td>
+                    <td>{{ab.zipc}}</td>
+                    <td>
+                      <a href="{% url 'editorsdelete' ab.id %}"><button>Delete</button></a>
+                      <a href="{% url 'editorsupdate' ab.id %}"><button>Update</button></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+                 
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+{% endblock %}

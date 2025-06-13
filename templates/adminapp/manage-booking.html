@@ -1,0 +1,107 @@
+{% extends "adminapp/master.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - View Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        table th {
+            background-color: #595a5b;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .pending {
+            background-color: #ffc107;
+            color: white;
+        }
+        .confirmed {
+            background-color: #28a745;
+            color: white;
+        }
+        .completed {
+            background-color: #17a2b8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin - View Bookings</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Service Type</th>
+                    <th>Booking Date</th>
+                    <th>Booking Time</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kittu Patel</td>
+                    <td>Nanny</td>
+                    <td>2025-03-20</td>
+                    <td>10:00 AM</td>
+                    {% comment %} <td><span class="status pending">Pending</span></td> {% endcomment %}
+                </tr>
+                <tr>
+                    <td>Bhoomika Tokre</td>
+                    <td>Maid</td>
+                    <td>2025-03-18</td>
+                    <td>2:00 PM</td>
+                    {% comment %} <td><span class="status confirmed">Confirmed</span></td> {% endcomment %}
+                </tr>
+                <tr>
+                    <td>Krima Patel</td>
+                    <td>Nanny</td>
+                    <td>2025-03-19</td>
+                    <td>11:00 AM</td>
+                    {% comment %} <td><span class="status completed">Completed</span></td> {% endcomment %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}  

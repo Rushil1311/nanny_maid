@@ -1,0 +1,54 @@
+{% extends 'userapp/master.html' %}
+{% load static %}\
+
+{% block content %}
+<div class="reviews-container">
+    <h2>Reviews & Ratings</h2>
+    
+    {% if reviews %}
+        {% for review in reviews %}
+        <div class="review-card">
+            <h3>{{ review.reviewer.username }}</h3>
+            <p><strong>Rating:</strong> ⭐{{ review.rating }}/5</p>
+            <p>{{ review.comment }}</p>
+            <small>{{ review.created_at|date:"F d, Y" }}</small>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+</div>
+
+<style>
+.reviews-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c3e50; /* Dark subtle background */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.review-card {
+    background-color: #34495e;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.review-card h3 {
+    margin: 0;
+    color: #f1c40f; /* Yellow */
+}
+
+.review-card p {
+    margin: 5px 0;
+}
+
+.review-card small {
+    color: #bdc3c7;
+}
+</style>
+{% endblock %}

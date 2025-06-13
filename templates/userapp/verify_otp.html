@@ -1,0 +1,25 @@
+{% extends "userapp/master.html" %}
+
+{% block content %}
+
+<br><br><br><br><br><br><br><br>
+<div class="container d-flex justify-content align-items-center flex-column shadow-sm py-5" style="max-width: 500px;">
+    <h2>Verify OTP</h2>
+    <p>Please enter the OTP sent to your email.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class=" row">
+        <input type="text" name="otp" class="form-control mb-2" placeholder="Enter OTP" required>
+        <button type="submit" class="btn btn-primary w-50 mx-auto">Verify OTP</button>
+    </div>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+{% endblock %}

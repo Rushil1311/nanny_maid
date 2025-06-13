@@ -1,0 +1,111 @@
+{% extends "adminapp/master.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Payments</title>
+    <link rel="stylesheet" href="your-theme-styles.css"> <!-- Link to your theme's CSS -->
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: var(--background-color, #fff);
+            border-radius: var(--border-radius, 8px);
+            box-shadow: var(--box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: var(--font-size-large, 24px);
+            margin: 0;
+            color: var(--primary-color, #333);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-base, 16px);
+        }
+        table th, table td {
+            border: 1px solid var(--border-color, #ddd);
+            padding: var(--spacing-small, 10px);
+            text-align: left;
+        }
+        table th {
+            background-color: var(--table-header-bg, #f4f4f4);
+            color: var(--primary-color, #333);
+        }
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-small, 10px);
+        }
+        .btn {
+            padding: var(--spacing-small, 8px) var(--spacing-medium, 12px);
+            border: none;
+            border-radius: var(--border-radius-small, 4px);
+            cursor: pointer;
+            font-size: var(--font-size-small, 14px);
+        }
+        .btn-accept {
+            background-color: var(--success-color, #4CAF50);
+            color: var(--button-text-color, white);
+        }
+        .btn-decline {
+            background-color: var(--error-color, #f44336);
+            color: var(--button-text-color, white);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Manage Payments</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nanny Name</th>
+                    <th>Payment Amount</th>
+                    <th>Payment Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example row -->
+                <tr>
+                    <td>1</td>
+                    <td>Jane Doe</td>
+                    <td>$500</td>
+                    <td>2025-03-17</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-accept" onclick="handleAction('accept', 1)">update</button>
+                            <button class="btn btn-decline" onclick="handleAction('decline', 1)">delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Additional rows go here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function handleAction(action, id) {
+            if (action === 'accept') {
+                alert(`Payment request #${id} accepted.`);
+                // Perform additional logic for accepting the payment
+            } else if (action === 'decline') {
+                alert(`Payment request #${id} declined.`);
+                // Perform additional logic for declining the payment
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'nanny_maidapp/master.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .reduced-margin-bottom {
+    margin-bottom: 10px; /* Adjust the value as needed */
+}
+
+.reduced-margin-top {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+.select-plan {
+    background-color: #f4b400; /* Original Yellow Color */
+    color: black;
+    border: none;
+    padding: 12px 32px; /* Increased width */
+    cursor: pointer;
+    border-radius: 25px; /* Rounded edges */
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: block; /* Makes button take full width */
+    width: 80%; /* Slightly bigger width */
+    margin: 15px auto 0; /* Centers button horizontally */
+    text-align: center;
+}
+
+.select-plan:hover {
+    background-color: #e5a900; /* Slightly darker yellow on hover */
+    transform: translateY(-2px); /* Smooth hover lift effect */
+}
+</style>
+<section class="cleaning-content-block price-table" id="pricing">
+    <div class=container>
+        <div class=row>
+            <div class=col-lg-12>
+                <div class="section-title text-center">
+                    <h2>Flexible Pricing</h2>
+                    <p>Let us use our years of experience, skilled employees, and advanced procedures to ensure a
+                        clean<br class=hidden-xs /> and healthy environment for your employees, customers and
+                        guests.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container mt-5">
+    <div class="row">
+        {% for plan in plans %}
+        <div class="col-lg-4 col-md-4">
+            <div class="single-price-table">
+                <h3>{{ plan.name|capfirst }} Subscription</h3>
+                <div class="amount-text">
+                    <h2>₹{{ plan.price }}</h2>
+                    <p>For {{ plan.duration_days }} Days</p>
+                </div>
+                <ul class="offer-list" class="reduced-margin-bottom"> <li>Apartment Cleaning</li>
+                    <li>Office Cleaning</li>
+                    <li>House Cleaning</li>
+                    <li>Car Washing</li>
+                    <li>Green Cleaning</li>
+                    <li>Maintenance Service</li>
+                </ul>
+                <button class="select-plan reduced-margin-top" data-plan-name="{{ plan.name }}"
+                        data-amount="{{ plan.get_price_in_paise }}">
+                    Select Plan
+                </button>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No subscription plans available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<!-- 
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            <div class="single-price-table">
+                <h3>3 Months Subscription</h3>
+                <div class="amount-text">
+                    <h2>₹5000</h2>
+                    <p>For 3 Months</p>
+                </div>
+                <ul class="offer-list">
+                    <li>Apartment Cleaning</li>
+                    <li>Office Cleaning</li>
+                    <li>House Cleaning</li>
+                    <li>Car Washing</li>
+                    <li>Green Cleaning</li>
+                    <li>Maintenance Service</li>
+                </ul>
+                <button class="select-plan" data-plan="3 Months Subscription" data-amount="5000">Select Plan</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="single-price-table">
+                <h3>6 Months Subscription</h3>
+                <div class="amount-text">
+                    <h2>₹9000</h2>
+                    <p>For 6 Months</p>
+                </div>
+                <ul class="offer-list">
+                    <li>Apartment Cleaning</li>
+                    <li>Office Cleaning</li>
+                    <li>House Cleaning</li>
+                    <li>Car Washing</li>
+                    <li>Green Cleaning</li>
+                    <li>Maintenance Service</li>
+                </ul>
+                <button class="select-plan" data-plan="6 Months Subscription" data-amount="9000">Select Plan</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="single-price-table">
+                <h3>1 Year Subscription</h3>
+                <div class="amount-text">
+                    <h2>₹14000</h2>
+                    <p>For 1 Year</p>
+                </div>
+                <ul class="offer-list">
+                    <li>Apartment Cleaning</li>
+                    <li>Office Cleaning</li>
+                    <li>House Cleaning</li>
+                    <li>Car Washing</li>
+                    <li>Green Cleaning</li>
+                    <li>Maintenance Service</li>
+                </ul>
+                <button class="select-plan" data-plan="1 Year Subscription" data-amount="14000">Select Plan</button>
+            </div>
+        </div>
+    </div>  
+</div> -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.querySelectorAll(".select-plan").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            let planName = this.getAttribute("data-plan-name");
+            let amount = this.getAttribute("data-amount");
+
+            fetch("{% url 'create_order' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({ "plan_name": planName, "amount": amount })
+            })
+            .then(response => response.json())
+            .then(order => {
+                var options = {
+                    "key": order.razorpay_key,  // Use the key from the JSON response
+                    "amount": order.amount,
+                    "currency": order.currency,
+                    "name": "Maid Service",
+                    "description": planName,
+                    "order_id": order.id,
+                    "handler": function (response) {
+                        fetch("{% url 'payment_success' %}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRFToken": "{{ csrf_token }}",
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: new URLSearchParams(response)
+                        })
+                        .then(res => res.json())
+                        .then(data => alert(data.message));
+                    },
+                    "prefill": {
+                        "name": "{{ request.user.username }}",
+                        "email": "{{ request.user.email }}"
+                    },
+                    "theme": { "color": "#3399cc" }
+                };
+
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            });
+        });
+    });
+</script>
+
+{% endblock %}

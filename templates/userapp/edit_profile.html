@@ -1,0 +1,183 @@
+{% extends "userapp/master.html" %} 
+{% load static %} 
+{% block content %}
+
+<style>
+    body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f1f2f7;
+    color: #797979;
+}
+
+.profile-nav .user-heading {
+    background: #fbc02d;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    border-radius: 4px 4px 0 0;
+}
+
+.profile-nav .user-heading img {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+}
+
+.profile-nav .user-heading h1 {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.profile-nav ul {
+    padding: 15px;
+}
+
+.profile-nav ul li a {
+    display: block;
+    padding: 10px;
+    color: #89817f;
+    text-decoration: none;
+}
+
+.profile-nav ul li a:hover {
+    background: #f8f7f5;
+    border-left: 5px solid #fbc02d;
+}
+
+.bio-graph-heading {
+    background: #fbc02d;
+    color: #fff;
+    text-align: center;
+    padding: 40px 110px;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.bio-graph-info {
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+}
+
+.bio-graph-info h1 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.bio-row {
+    width: 48%;
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.bio-row label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+}
+
+.bio-row input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.save-btn {
+    background: #fbc02d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background: #d89e02;
+}
+
+
+</style>
+<br><br>
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+
+        <div class="profile-nav col-md-3">
+            <div class="panel">
+                <div class="user-heading round">
+                    <a href="#">
+                    {% if user.profile %}
+                        <img src="{{request.user.profile.url}}" alt="" enctype = "multipart/form">
+                    {% else %}
+                    <img src="#" >
+                    {% endif %}
+                    </a>
+                    <h1>{{ request.user.first_name }} {{ request.user.last_name }}</h1>
+                    <p>{{ request.user.email }}</p>
+                </div>
+
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="{% url 'user_profile' %}"><i class="fa fa-user"></i> View Profile</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="profile-info col-md-9">
+            <div class="panel">
+                <div class="bio-graph-heading">
+                    "Update your profile to make the most of Integra Cleaning Services!"
+                </div>
+                <div class="panel-body bio-graph-info">
+                    <h1>Edit Profile</h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="bio-row">
+                                <label>First Name</label>
+                                <input type="text" name="first_name" value="{{ request.user.first_name }}" required>
+                            </div>
+                            <div class="bio-row">
+                                <label>Last Name</label>
+                                <input type="text" name="last_name" value="{{ request.user.last_name }}" required>
+                            </div>
+                            <div class="bio-row">
+                                <label>Email</label>
+                                <input type="email" name="email" value="{{ request.user.email }}" required>
+                            </div>
+                            <div class="bio-row">
+                                <label>Mobile</label>
+                                <input type="text" name="phone" value="{{ request.user.phone }}" required>
+                            </div>
+                            
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <div> <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <!-- your input fields -->
+                                <input type="file" name="profile">
+                                <button type="submit">Update</button>
+                            </form>
+                            </div>
+                        </div>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br> <br><br>
+
+{% endblock %}  
