@@ -111,26 +111,26 @@ This project is for educational and demonstration purposes. License details can 
 ### 🧰 List of Services
 ![List services in admin panel](media/outputscreen/ms.png)
 
-### Service details  Output 
-!(media/outputscreen/sd.png) 
+### 🛠️ Service Details Output 
+![Service details output](media/outputscreen/sd.png)
 
-### Service Request Output 
-!(media/outputscreen/sr.png) 
+### 📦 Service Request Output  
+![Service request output](media/outputscreen/sr.png)
 
-### Service Request Form Output 
-!(media/outputscreen/srf.png) 
+### 🧾 Service Request Form Output 
+![Service request form output](media/outputscreen/srf.png)
 
-### User Output 1
-!(media/outputscreen/User%20output1.png) 
+### 👤 User Output 1  
+![User output 1](media/outputscreen/User%20output1.png)
 
-### User Output 2
-!(media/outputscreen/User%20output2.png)
+### 👤 User Output 2  
+![User output 2](media/outputscreen/User%20output2.png)
 
-### View Bookings Output 
-!(media/outputscreen/vb.png)
+### 📅 View Bookings Output  
+![View bookings output](media/outputscreen/vb.png)
 
-### View Feedback Output 
-!(media/outputscreen/vf.png) 
+### 🗣️ View Feedback Output  
+![View feedback output](media/outputscreen/vf.png)
 
-### View Payment Output 
-!(media/outputscreen/vp.png)
+### 💳 View Payment Output  
+![View payment output](media/outputscreen/vp.png)
